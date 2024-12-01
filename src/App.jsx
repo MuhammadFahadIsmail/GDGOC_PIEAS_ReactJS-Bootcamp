@@ -1,22 +1,21 @@
 import React from 'react';
-import HighRatedBooks from './HighRatedBooks';
-import BookDetails from './BookDetails';
-import FictionBooks from './FictionBooks';
-import BookAuthors from './BookAuthors';
-import BorrowedBooks from './components/BorrowedBooks';
-import FavBooks from './components/FavBooks';
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import BorrowedPage from "./pages/BorrowedPage";
+import FavoritesPage from "./pages/FavoritesPage";
+
 const App = () => (
-  <div style={{
-    textAlign: "center"}}>
-    <h1>Library Manager</h1>
-    <BorrowedBooks />
-    <FavBooks />
-    <HighRatedBooks />
-    <BookDetails />
-    <FictionBooks />
-    <BookAuthors />
-    
-  </div>
+  <Router>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/borrowed" element={<BorrowedPage />} />
+      <Route path="/favorites" element={<FavoritesPage />} />
+    </Routes>
+  </Router>
 );
 
 export default App;

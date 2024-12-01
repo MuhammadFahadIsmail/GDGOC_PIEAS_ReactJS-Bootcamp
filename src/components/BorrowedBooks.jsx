@@ -1,5 +1,5 @@
-import { useContext } from 'react';
-import { BookContext } from '../BookContext';
+import React, { useContext } from "react";
+import { BookContext } from "../context/BookContext";
 
 const BorrowedBooks = () => {
   const { borrowedBooks } = useContext(BookContext);
@@ -14,7 +14,7 @@ const BorrowedBooks = () => {
           ))}
         </ul>
       ) : (
-        <p>No books borrowed yet.</p>
+        <p>No borrowed books yet.</p>
       )}
     </div>
   );
