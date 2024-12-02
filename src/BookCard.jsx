@@ -1,18 +1,25 @@
-import { useContext } from 'react';
-import { BookContext } from './BookContext';
-import Button from './Button';
+import React, { useContext } from 'react';
+import BooksContext from './BooksContext';
 
-const BookCard = ({ title, author, rating, genre }) => {
-  const { addBorrowedBook, addFavBook } = useContext(BookContext);
+const BookCard = ({ id, title, author, rating, genre }) => {
+  const { borrowedBooks, favBooks, setBorrowedBooks, setFavBooks } = useContext(BooksContext);
+
+  const handleAddMe = () => {
+    setBorrowedBooks([...borrowedBooks, title]);
+  };
+
+  const handleFavorite = () => {
+    setFavBooks([...favBooks, title]);
+  };
 
   return (
-    <div className="book-card">
-      <h2>{title}</h2>
-      <p>Author: {author}</p>
-      <p>Rating: {rating}</p>
-      <p>Genre: {genre}</p>
-      <Button label="Add Me" onClick={() => addBorrowedBook(title)} />
-      <Button label="Favorite" onClick={() => addFavBook(title)} />
+    <div>
+      <h3>{title}</h3>
+      <p>{author}</p>
+      <p>{rating}</p>
+      <p>{genre}</p>
+      <button onClick={handleAddMe}>Add Me</button>
+      <button onClick={handleFavorite}>Favorite</button>
     </div>
   );
 };
